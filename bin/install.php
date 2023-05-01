@@ -26,11 +26,11 @@ Databse: $CONFIG_RAL_DATABASE
 CONFIRM;
 
 $queries[] = <<<SQL
-	CREATE DATABASE `$CONFIG_RAL_DATABASE`
+	CREATE DATABASE IF NOT EXISTS `$CONFIG_RAL_DATABASE`
 SQL;
 
 $queries[] = <<<SQL
-	CREATE TABLE `Continuities` (
+	CREATE TABLE IF NOT EXISTS `Continuities` (
 	`Name` varchar(16) NOT NULL,
 	`Post Count` int(11) DEFAULT 0,
 	`Description` varchar(32) DEFAULT NULL,
@@ -38,7 +38,7 @@ $queries[] = <<<SQL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8
 SQL;
 $queries[] = <<<SQL
-	CREATE TABLE `Topics` (
+	CREATE TABLE IF NOT EXISTS `Topics` (
 	`Id` int(11) NOT NULL,
 	`Created` datetime DEFAULT current_timestamp(),
 	`Continuity` varchar(16) NOT NULL,
@@ -51,7 +51,7 @@ $queries[] = <<<SQL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8
 SQL;
 $queries[] = <<<SQL
-	CREATE TABLE `Replies` (
+	CREATE TABLE IF NOT EXISTS `Replies` (
 	`Id` int(11) NOT NULL,
 	`Created` datetime DEFAULT current_timestamp(),
 	`Continuity` varchar(16) NOT NULL,
@@ -72,7 +72,7 @@ $queries[] = <<<SQL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8
 SQL;
 $queries[] = <<<SQL
-	CREATE TABLE `Friends` (
+	CREATE TABLE IF NOT EXISTS `Friends` (
 	`Username` varchar(30) NOT NULL,
 	`Password` varchar(255) NOT NULL,
 	`Birthday` char(5) NOT NULL,
@@ -83,14 +83,14 @@ $queries[] = <<<SQL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8
 SQL;
 $queries[] = <<<SQL
-	CREATE TABLE `Sessions` (
+	CREATE TABLE IF NOT EXISTS `Sessions` (
 	`Id` varchar(64) NOT NULL,
 	`Username` varchar(30) NOT NULL,
 	PRIMARY KEY (`Id`)
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8
 SQL;
 $queries[] = <<<SQL
-	CREATE TABLE `Bans` (
+	CREATE TABLE IF NOT EXISTS `Bans` (
 	`Id` VARCHAR(256) NOT NULL,
 	`Type` VARCHAR(64) NOT NULL,
 	`Date` DATETIME DEFAULT CURRENT_TIMESTAMP,
@@ -98,7 +98,7 @@ $queries[] = <<<SQL
 	) ENGINE=InnoDB DEFAULT CHARSET=utf8
 SQL;
 $queries[] = <<<SQL
-	CREATE TABLE `News` (
+	CREATE TABLE IF NOT EXISTS `News` (
 		`Id` int(11) NOT NULL AUTO_INCREMENT,
 		`Created` datetime DEFAULT current_timestamp(),
 		`Author` varchar(40) NOT NULL,
@@ -132,9 +132,9 @@ if (is_dir("{$installfolder}/jBBCode")) {
 	$tmpfile = escapeshellarg("{$tmp}/jbbcode-1.3.0.zip");
 	$tmp = escapeshellarg($tmp);
 	$cmd = <<<CMD
-	curl http://jbbcode.com/file/jbbcode-1.3.0.zip --output \
+	curl http://jbbcode.com/file/jbbcode-1.3.0.zip --output \ 
 	$tmpfile
-CMD;
+CMD; //This link is broken.
 	system($cmd);
 	$cmd = <<<CMD
 	unzip -q $tmpfile -d $tmp ; \
@@ -155,9 +155,9 @@ CMD;
 	$tmpfile = escapeshellarg("{$tmp}/b8-0.6.2.tar.xz");
 	$tmp = escapeshellarg($tmp);
 	$cmd = <<<CMD
-	curl https://nasauber.de/opensource/b8/b8-0.6.2.tar.xz --output \
+	curl https://nasauber.de/opensource/b8/b8-0.6.2.tar.xz --output \ 
 	$tmpfile
-CMD;
+CMD; //This link is very broken.
 	system($cmd);
 	$cmd = <<<CMD
 	tar xvf $tmpfile -C $tmp ; \
@@ -169,7 +169,7 @@ CMD;
 CMD;
 	system($cmd);
 }
-dba_close(dba_open(CONFIG_SPAM_DB, "c"));
+dba_close(dba_open(CONFIG_SPAM_DB, "c")); //This throws and error for some reason.
 
 print <<<FIN
 Finished!
