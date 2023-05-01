@@ -11,7 +11,7 @@ discussion space on the internet; RAL is a new type of discussion space
 called a neo-forum.
 
 If you are curious what RAL feels like
-[check out the site](https://ralee.org).
+[check out the site](https://ralee.xyz).
 
 First, you may notice that there are a number of different boards which
 have a single focus. These boards are called _continuities_ because unlinke
