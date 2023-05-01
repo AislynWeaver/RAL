@@ -34,10 +34,10 @@ define("CONFIG_COOKIE_TIMEOUT", 60*60*24*30);
 
 // Your website! (trailing slash is important)
 define("CONFIG_WEBROOT", "/");
-define("CONFIG_LOCALROOT", "/var/http/hub/ral/");
+define("CONFIG_LOCALROOT", "/var/www/http/ral/");
 
 // SPAM parameters
-define("CONFIG_SPAM_DB", "/var/http/hub/ral/tmp/b8-wordlist.db");
+define("CONFIG_SPAM_DB", "/var/www/http/ral/tmp/b8-wordlist.db");
 define("CONFIG_SPAM_THRESHOLD", 0.75);
 define("CONFIG_MIN_POST_BYTES", 25);
 define("CONFIG_MAX_POST_BYTES", 5000);
@@ -49,14 +49,14 @@ define("CONFIG_SECRET_SALT", "NOT_SO_SECRET");
 
 define("CONFIG_TMP_EXPIRY", 1440);
 
-define("CONFIG_BANNER", "https://ralee.org/res/RAL.gif");
+define("CONFIG_BANNER", "https://ralee.xyz/res/RAL.gif");
 
 // Only used for the RSS feed
-define("CONFIG_CANON_URL", "https://ralee.org");
+define("CONFIG_CANON_URL", "https://ralee.xyz");
 
 // Only set if you have set up lighttpd like in the example config!
-// true: https:ralee.org/max/Anime/1
-// false: https:ralee.org/max.php?continuity=Anime&topic=1
+// true: https:ralee.xyz/max/Anime/1
+// false: https:ralee.xyz/max.php?continuity=Anime&topic=1
 define("CONFIG_CLEAN_URL", false);
 
 // Themes
