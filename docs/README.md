@@ -40,3 +40,5 @@ License
 -------
 
 Modified BSD License (see `docs/LICENSE`)
+
+![image](https://raw.githubusercontent.com/cat-milk/Anime-Girls-Holding-Programming-Books/master/PHP/Hatsune_Miku_Holding_PHP_Book.png)
