@@ -132,11 +132,12 @@ if (is_dir("{$installfolder}/jBBCode")) {
 	$tmpfile = escapeshellarg("{$tmp}/jbbcode-1.3.0.zip");
 	$tmp = escapeshellarg($tmp);
 	$cmd = <<<CMD
-	curl http://jbbcode.com/file/jbbcode-1.3.0.zip --output \ 
+	curl https://web.archive.org/web/20160130150030/http://jbbcode.com/file/jbbcode-1.3.0.zip --output \ 
 	$tmpfile
 CMD; //This link is broken.
 	system($cmd);
 	$cmd = <<<CMD
+	apt install unzip -y
 	unzip -q $tmpfile -d $tmp ; \
 	mv $relevpath $installto ; \
 	rm $tmpfile ; \
@@ -155,7 +156,7 @@ CMD;
 	$tmpfile = escapeshellarg("{$tmp}/b8-0.6.2.tar.xz");
 	$tmp = escapeshellarg($tmp);
 	$cmd = <<<CMD
-	curl https://nasauber.de/opensource/b8/b8-0.6.2.tar.xz --output \ 
+	curl https://nasauber.de/opensource/b8/download/b8-0.6.2.tar.xz --output \ 
 	$tmpfile
 CMD; //This link is very broken.
 	system($cmd);
